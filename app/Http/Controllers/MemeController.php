@@ -53,10 +53,11 @@ class MemeController extends Controller
         if($page != null){                                                 //then count the current page no
             $count = Meme::where('page','=',$page->page)->count();         //as one page has 9 images, so if 
             error_log($count);                                             //more than 9 then it'll be next page
-            if($count>=9)
+            if($count>=9){
                 $meme->page = $page->page+1;
-            else
+            }else{
                 $meme->page = $page->page;
+            }
         }else{
             $meme->page = 1;
         }
